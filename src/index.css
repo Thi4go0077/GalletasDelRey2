@@ -2,15 +2,24 @@
   box-sizing: border-box;
 }
 
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f3f4f6;
 }
 
+
+button {
+  font-family: inherit;
+}
+
+.home-page {
+  min-height: 100vh;
+  padding: 1rem;
+
 .home-page {
   margin: 0 auto;
   max-width: 1100px;
   padding: 2rem;
+
 }
