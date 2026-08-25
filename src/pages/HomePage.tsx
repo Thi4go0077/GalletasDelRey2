@@ -1,14 +1,4 @@
-
-import Navbar from "../components/layout/Navbar";
-
-function HomePage() {
-  return (
-    <main className="home-page">
-      <Navbar />
-    </main>
-
 import { useNavigate } from "react-router-dom";
-
 import Navbar from "../components/layout/Navbar";
 import { authRepository } from "../repositories/authRepository";
 
@@ -24,6 +14,7 @@ function HomePage() {
   return (
     <>
       <Navbar user={user} />
+
       <main className="home-page">
         <h1>Página principal</h1>
 
@@ -42,7 +33,6 @@ function HomePage() {
         )}
       </main>
     </>
-
   );
 }
 
