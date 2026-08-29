@@ -10,9 +10,13 @@ function Navbar({ user }: NavbarProps) {
 
   return (
     <header className="navbar" aria-label="Barra principal">
-      <div className="navbar__logo" aria-label="Logo de Galletas Del Rey">
-        <span className="navbar__logo-mark">GDR</span>
-        <span className="navbar__logo-text">Logo</span>
+      <div className="navbar__logo" aria-label="Galletas Del Rey">
+        <img
+          className="navbar__logo-image"
+          src="/logo/logo-icon.jpg"
+          alt="Logo de Galletas Del Rey"
+        />
+        <span className="navbar__logo-text">Galletas Del Rey</span>
       </div>
 
       <div className="navbar__actions">

@@ -19,16 +19,12 @@
   min-width: max-content;
 }
 
-.navbar__logo-mark {
-  align-items: center;
-  background: #fed7aa;
+.navbar__logo-image {
+  border: 2px solid #fed7aa;
   border-radius: 999px;
-  color: #7c2d12;
-  display: inline-flex;
-  font-weight: 800;
+  display: block;
   height: 44px;
-  justify-content: center;
-  letter-spacing: 0.04em;
+  object-fit: cover;
   width: 44px;
 }
 
