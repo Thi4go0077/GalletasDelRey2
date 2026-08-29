@@ -10,45 +10,24 @@ function Navbar({ user }: NavbarProps) {
 
   return (
     <header className="navbar" aria-label="Barra principal">
-      <div className="navbar__logo" aria-label="Galletas Del Rey">
+      <a className="navbar__logo" href="/" aria-label="Ir al inicio de Galletas Del Rey">
         <img
           className="navbar__logo-image"
           src="/logo/logo-icon.jpg"
           alt="Logo de Galletas Del Rey"
         />
-        <span className="navbar__logo-text">Galletas Del Rey</span>
-      </div>
+        <span className="navbar__logo-text">GALLETAS DEL REY</span>
+      </a>
 
-      <div className="navbar__actions">
-        <span className="navbar__username">{displayName}</span>
+      <nav className="navbar__menu" aria-label="Navegación principal">
+        <a href="/">Inicio</a>
+        <a href="#sabores">Catálogo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
-        <button
-          className="navbar__button"
-          type="button"
-          aria-label="Abrir carrito"
-        >
-          🛒
-          <span>Carrito</span>
-        </button>
-
-        <button
-          className="navbar__button"
-          type="button"
-          aria-label="Ver notificaciones"
-        >
-          🔔
-          <span>Notificaciones</span>
-        </button>
-
-        <button
-          className="navbar__button"
-          type="button"
-          aria-label="Abrir perfil"
-        >
-          👤
-          <span>Perfil</span>
-        </button>
-      </div>
+      <span className="navbar__username" aria-label={`Usuario actual: ${displayName}`}>
+        {displayName}
+      </span>
     </header>
   );
 }
