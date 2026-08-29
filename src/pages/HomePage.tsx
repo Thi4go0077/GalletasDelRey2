@@ -1,44 +1,38 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
+import { products } from "../data/products";
 import { authRepository } from "../repositories/authRepository";
+import { cartService } from "../services/cartService";
+import type { ProductId } from "../types/cart";
 
 const heroCookieImage =
   "https://images.unsplash.com/photo-1436564989038-18b9958df72b?auto=format&fit=crop&w=1100&q=80";
 
-const flavorCards = [
-  {
-    name: "Coco",
-    image:
-      "https://images.unsplash.com/photo-1436564989038-18b9958df72b?auto=format&fit=crop&w=700&q=80",
-    alt: "Galletas artesanales doradas con detalles de coco",
-  },
-  {
-    name: "Avena",
-    image:
-      "https://images.unsplash.com/photo-1631311253861-52eaf0337adb?auto=format&fit=crop&w=700&q=80",
-    alt: "Galletas de avena apiladas en una mesa",
-  },
-  {
-    name: "Limón",
-    image:
-      "https://images.unsplash.com/photo-1744160252920-967ab9b733ce?auto=format&fit=crop&w=700&q=80",
-    alt: "Galletas de limón con una presentación clara y fresca",
-  },
-  {
-    name: "Frutilla",
-    image:
-      "https://images.unsplash.com/photo-1748185689409-e2cbe764d644?auto=format&fit=crop&w=700&q=80",
-    alt: "Galletas acompañadas con frutillas frescas",
-  },
-];
-
 function HomePage() {
   const navigate = useNavigate();
   const user = authRepository.getCurrentUser();
+  const [quantities, setQuantities] = useState(() => cartService.getQuantities());
+
+  useEffect(() => {
+    cartService.setQuantities(quantities);
+  }, [quantities]);
 
   const handleLogout = () => {
     authRepository.logout();
     navigate("/login", { replace: true });
+  };
+
+  const handleQuantityChange = (productId: ProductId, change: number) => {
+    setQuantities((currentQuantities) => ({
+      ...currentQuantities,
+      [productId]: Math.max(0, currentQuantities[productId] + change),
+    }));
+  };
+
+  const handleViewCart = () => {
+    cartService.setQuantities(quantities);
+    navigate("/carrito");
   };
 
   return (
@@ -88,12 +82,35 @@ function HomePage() {
           </div>
 
           <div className="flavors-grid">
-            {flavorCards.map((flavor) => (
-              <article className="flavor-card" key={flavor.name}>
-                <img src={flavor.image} alt={flavor.alt} />
-                <h3>{flavor.name}</h3>
+            {products.map((product) => (
+              <article className="flavor-card" key={product.id}>
+                <img src={product.image} alt={product.alt} />
+                <h3>{product.name}</h3>
+                <div className="quantity-control" aria-label={`Cantidad de ${product.name}`}>
+                  <button
+                    aria-label={`Disminuir cantidad de ${product.name}`}
+                    onClick={() => handleQuantityChange(product.id, -1)}
+                    type="button"
+                  >
+                    -
+                  </button>
+                  <span aria-live="polite">{quantities[product.id]}</span>
+                  <button
+                    aria-label={`Aumentar cantidad de ${product.name}`}
+                    onClick={() => handleQuantityChange(product.id, 1)}
+                    type="button"
+                  >
+                    +
+                  </button>
+                </div>
               </article>
             ))}
+          </div>
+
+          <div className="cart-action">
+            <button className="cart-action__button" onClick={handleViewCart} type="button">
+              VER CARRITO
+            </button>
           </div>
         </section>
 
