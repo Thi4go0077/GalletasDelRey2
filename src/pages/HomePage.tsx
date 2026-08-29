@@ -2,30 +2,33 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import { authRepository } from "../repositories/authRepository";
 
+const heroCookieImage =
+  "https://images.unsplash.com/photo-1436564989038-18b9958df72b?auto=format&fit=crop&w=1100&q=80";
+
 const flavorCards = [
   {
     name: "Coco",
-    image: null,
-    placeholder: "🥥",
-    alt: "Placeholder decorativo para galletas sabor coco",
+    image:
+      "https://images.unsplash.com/photo-1436564989038-18b9958df72b?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas artesanales doradas con detalles de coco",
   },
   {
     name: "Avena",
-    image: null,
-    placeholder: "🌾",
-    alt: "Placeholder decorativo para galletas sabor avena",
+    image:
+      "https://images.unsplash.com/photo-1631311253861-52eaf0337adb?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de avena apiladas en una mesa",
   },
   {
     name: "Limón",
-    image: null,
-    placeholder: "🍋",
-    alt: "Placeholder decorativo para galletas sabor limón",
+    image:
+      "https://images.unsplash.com/photo-1744160252920-967ab9b733ce?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de limón con una presentación clara y fresca",
   },
   {
     name: "Frutilla",
-    image: null,
-    placeholder: "🍓",
-    alt: "Placeholder decorativo para galletas sabor frutilla",
+    image:
+      "https://images.unsplash.com/photo-1748185689409-e2cbe764d644?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas acompañadas con frutillas frescas",
   },
 ];
 
@@ -56,13 +59,12 @@ function HomePage() {
             </a>
           </div>
 
-          <div
-            className="home-hero__image-card home-hero__placeholder"
-            role="img"
-            aria-label="Placeholder decorativo para imagen principal de galletas"
-          >
-            <span>🍪</span>
-          </div>
+          <figure className="home-hero__image-card">
+            <img
+              src={heroCookieImage}
+              alt="Galletas artesanales reales servidas junto a cítricos"
+            />
+          </figure>
         </section>
 
         <section className="welcome-card" aria-label="Mensaje de bienvenida">
@@ -88,13 +90,7 @@ function HomePage() {
           <div className="flavors-grid">
             {flavorCards.map((flavor) => (
               <article className="flavor-card" key={flavor.name}>
-                {flavor.image ? (
-                  <img src={flavor.image} alt={flavor.alt} />
-                ) : (
-                  <div className="flavor-card__placeholder" role="img" aria-label={flavor.alt}>
-                    {flavor.placeholder}
-                  </div>
-                )}
+                <img src={flavor.image} alt={flavor.alt} />
                 <h3>{flavor.name}</h3>
               </article>
             ))}
