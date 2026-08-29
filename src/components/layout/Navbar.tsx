@@ -14,7 +14,7 @@ function Navbar({ user }: NavbarProps) {
         <img
           className="navbar__logo-image"
           src="/logo/logo-icon.jpg"
-          alt="Logo de Galletas Del Rey"
+          alt="Marca de Galletas Del Rey"
         />
         <span className="navbar__logo-text">GALLETAS DEL REY</span>
       </a>
