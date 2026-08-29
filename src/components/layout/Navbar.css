@@ -4,83 +4,85 @@
   box-shadow: 0 8px 24px rgb(124 45 18 / 18%);
   color: #fff7ed;
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   justify-content: space-between;
   min-height: 72px;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-
-/* LOGO */
 
 .navbar__logo {
   align-items: center;
+  color: inherit;
   display: flex;
   gap: 0.75rem;
   min-width: max-content;
+  text-decoration: none;
 }
 
 .navbar__logo-image {
   border: 2px solid #fed7aa;
   border-radius: 999px;
   display: block;
-  height: 44px;
+  height: 46px;
   object-fit: cover;
-  width: 44px;
+  width: 46px;
 }
 
 .navbar__logo-text {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
-/* ACCIONES */
-
-.navbar__actions {
+.navbar__menu {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: flex-end;
+  gap: 0.45rem;
+  justify-content: center;
+}
+
+.navbar__menu a {
+  border-radius: 999px;
+  color: #fff7ed;
+  font-weight: 700;
+  padding: 0.65rem 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__menu a:hover,
+.navbar__menu a:focus-visible {
+  background: #fff7ed;
+  color: #7c2d12;
+  outline: none;
 }
 
 .navbar__username {
-  font-weight: 700;
-  margin-right: 0.25rem;
-}
-
-/* BOTONES */
-
-.navbar__button {
-  align-items: center;
-  background: #fff7ed;
-  border: 0;
+  background: rgb(255 247 237 / 14%);
+  border: 1px solid rgb(255 247 237 / 24%);
   border-radius: 999px;
-  color: #7c2d12;
-  cursor: pointer;
-  display: inline-flex;
-  font: inherit;
   font-weight: 700;
-  gap: 0.4rem;
-  padding: 0.65rem 0.95rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0.55rem 0.85rem;
+  white-space: nowrap;
 }
 
-.navbar__button:hover {
-  box-shadow: 0 8px 18px rgb(67 20 7 / 22%);
-  transform: translateY(-1px);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 680px) {
+@media (max-width: 760px) {
   .navbar {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
-    padding: 1rem;
   }
 
-  .navbar__actions {
-    justify-content: flex-start;
-    width: 100%;
+  .navbar__logo,
+  .navbar__menu {
+    justify-content: center;
+  }
+
+  .navbar__username {
+    text-align: center;
+    white-space: normal;
   }
 }
