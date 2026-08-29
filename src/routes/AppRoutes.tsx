@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 
+import CartPage from "../pages/CartPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/auth/LoginPage";
 
@@ -15,6 +16,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/carrito" element={<CartPage />} />
       </Routes>
     </BrowserRouter>
   );
