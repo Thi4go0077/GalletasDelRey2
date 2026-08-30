@@ -49,7 +49,7 @@ function HomePage() {
               especiales cada día.
             </p>
             <a className="home-hero__button" href="#sabores">
-              VER CATÁLOGO
+              DESCUBRIR NUESTROS SABORES
             </a>
           </div>
 
@@ -78,11 +78,11 @@ function HomePage() {
         <section className="flavors-section" id="sabores" aria-labelledby="flavors-title">
           <div className="section-heading">
             <p>Nuestro catálogo</p>
-            <h2 id="flavors-title">Sabores Disponibles</h2>
+            <h2 id="flavors-title">Nuestros sabores más populares</h2>
           </div>
 
           <div className="flavors-grid">
-            {products.map((product) => (
+            {products.slice(0, 4).map((product) => (
               <article className="flavor-card" key={product.id}>
                 <img src={product.image} alt={product.alt} />
                 <h3>{product.name}</h3>

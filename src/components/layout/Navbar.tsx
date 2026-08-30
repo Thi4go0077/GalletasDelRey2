@@ -13,7 +13,7 @@ function Navbar({ user }: NavbarProps) {
       <a className="navbar__logo" href="/" aria-label="Ir al inicio de Galletas Del Rey">
         <img
           className="navbar__logo-image"
-          src="/logo/logo-icon.jpg"
+          src="/logo/logo.jpeg"
           alt="Marca de Galletas Del Rey"
         />
         <span className="navbar__logo-text">GALLETAS DEL REY</span>
@@ -21,7 +21,7 @@ function Navbar({ user }: NavbarProps) {
 
       <nav className="navbar__menu" aria-label="Navegación principal">
         <a href="/">Inicio</a>
-        <a href="#sabores">Catálogo</a>
+        <a href="/catalogo">Catálogo</a>
         <a href="#contacto">Contacto</a>
       </nav>
 

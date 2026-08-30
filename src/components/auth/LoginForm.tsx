@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { FormEventHandler } from "react";
+import { Link } from "react-router-dom";
 import type { LoginCredentials } from "../../types/auth";
 import "./LoginForm.css";
 
@@ -11,6 +12,8 @@ interface LoginFormProps {
 function LoginForm({ error, onSubmit }: LoginFormProps) {
   const [carnet, setCarnet] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
@@ -28,47 +31,140 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Iniciar sesión</h1>
+    <main className="login-page">
+      <section className="login-card">
+        <header className="login-header">
+          <div className="login-brand">
+            <span className="login-crown" aria-hidden="true">
+              ♛
+            </span>
 
-      <div>
-        <label htmlFor="carnet">Carnet de identidad</label>
+            <span className="login-brand-name">
+              Galletas del Rey
+            </span>
+          </div>
+        </header>
 
-        <input
-          id="carnet"
-          name="carnet"
-          type="text"
-          value={carnet}
-          onChange={(event) => setCarnet(event.target.value)}
-          placeholder="Ingrese su carnet"
-          autoComplete="username"
-          required
-        />
-      </div>
+        <div className="login-content">
+          <h1>Bienvenido de nuevo</h1>
 
-      <div>
-        <label htmlFor="password">Contraseña</label>
+          <p className="login-subtitle">
+            Inicie sesión para continuar.
+          </p>
 
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Ingrese su contraseña"
-          autoComplete="current-password"
-          required
-        />
-      </div>
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="login-field">
+              <label htmlFor="carnet">
+                Correo electrónico / Carnet de identidad
+              </label>
 
-      {error && (
-        <p role="alert" aria-live="polite">
-          {error}
-        </p>
-      )}
+              <div className="login-input-wrapper">
+                <span className="login-input-icon" aria-hidden="true">
+                  ✉
+                </span>
 
-      <button type="submit">Ingresar</button>
-    </form>
+                <input
+                  id="carnet"
+                  name="carnet"
+                  type="text"
+                  value={carnet}
+                  onChange={(event) => setCarnet(event.target.value)}
+                  placeholder="Ingrese su correo o carnet"
+                  autoComplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="login-field">
+              <label htmlFor="password">
+                Contraseña
+              </label>
+
+              <div className="login-input-wrapper">
+                <span className="login-input-icon" aria-hidden="true">
+                  🔒
+                </span>
+
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Ingrese su contraseña"
+                  autoComplete="current-password"
+                  required
+                />
+
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() =>
+                    setShowPassword((current) => !current)
+                  }
+                  aria-label={
+                    showPassword
+                      ? "Ocultar contraseña"
+                      : "Mostrar contraseña"
+                  }
+                >
+                  {showPassword ? "◉" : "👁"}
+                </button>
+              </div>
+            </div>
+
+            <div className="login-options">
+              <label className="remember-option">
+                <input
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={(event) =>
+                    setRememberMe(event.target.checked)
+                  }
+                />
+
+                <span>Recordarme</span>
+              </label>
+
+              <button
+                type="button"
+                className="forgot-password"
+                onClick={() => {
+                  alert(
+                    "La recuperación de contraseña se implementará próximamente.",
+                  );
+                }}
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
+            </div>
+
+            {error && (
+              <p
+                className="login-error"
+                role="alert"
+                aria-live="polite"
+              >
+                {error}
+              </p>
+            )}
+
+            <button type="submit" className="login-button">
+              INICIAR SESIÓN
+            </button>
+          </form>
+
+          <div className="login-register">
+            <span>¿No tienes una cuenta?</span>
+
+            <Link to="/registro" className="register-link">
+              Registrarse
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 

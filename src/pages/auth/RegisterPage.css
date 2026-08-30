@@ -1,4 +1,4 @@
-.login-page {
+.register-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -7,7 +7,7 @@
   background: #f7f4ec;
 }
 
-.login-card {
+.register-card {
   width: min(100%, 480px);
   overflow: hidden;
   background: #ffffff;
@@ -15,26 +15,25 @@
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
 }
 
-.login-header {
-  position: relative;
+.register-header {
   padding: 28px 30px 24px;
-  background: #fff;
+  background: #ffffff;
   border-bottom: 6px solid #f3c928;
 }
 
-.login-brand {
+.register-brand {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
 
-.login-crown {
+.register-crown {
   font-size: 30px;
   line-height: 1;
 }
 
-.login-brand-name {
+.register-brand-name {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 30px;
   font-style: italic;
@@ -42,144 +41,92 @@
   color: #3f3025;
 }
 
-.login-content {
+.register-content {
   padding: 36px 38px 34px;
 }
 
-.login-content h1 {
+.register-content h1 {
   margin: 0;
   text-align: center;
   font-size: 30px;
   color: #34271f;
 }
 
-.login-subtitle {
+.register-subtitle {
   margin: 10px 0 30px;
   text-align: center;
   color: #777;
   font-size: 15px;
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-.login-field {
+.register-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.login-field label {
+.register-field label {
   font-weight: 600;
   color: #40352e;
   font-size: 14px;
 }
 
-.login-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.login-input-icon {
-  position: absolute;
-  left: 14px;
-  font-size: 17px;
-  z-index: 1;
-}
-
-.login-input-wrapper input {
+.register-field input,
+.register-field select {
   width: 100%;
   box-sizing: border-box;
-  padding: 13px 44px 13px 44px;
+  padding: 13px 14px;
   border: 1px solid #d8d2c8;
   border-radius: 10px;
   outline: none;
   font-size: 15px;
-  background: #fff;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #ffffff;
 }
 
-.login-input-wrapper input:focus {
+.register-field input:focus,
+.register-field select:focus {
   border-color: #d5ad19;
   box-shadow: 0 0 0 3px rgba(243, 201, 40, 0.18);
 }
 
-.password-toggle {
-  position: absolute;
-  right: 10px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 17px;
-  padding: 6px;
-}
-
-.login-options {
+.register-terms {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
+  margin-top: 2px;
+  color: #5e554e;
   font-size: 13px;
 }
 
-.remember-option {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #5e554e;
-}
-
-.remember-option input {
+.register-terms input {
   accent-color: #3f8f58;
 }
 
-.forgot-password,
-.register-link {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: #3f8f58;
-  font-weight: 600;
-}
-
-.forgot-password:hover,
-.register-link:hover {
-  text-decoration: underline;
-}
-
-.login-error {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: #fff0f0;
-  color: #b3261e;
-  font-size: 14px;
-  text-align: center;
-}
-
-.login-button {
+.register-button {
   width: 100%;
   border: none;
   border-radius: 10px;
   padding: 14px 20px;
   background: #3f8f58;
-  color: white;
+  color: #ffffff;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.15s, opacity 0.15s;
 }
 
-.login-button:hover {
+.register-button:hover {
   opacity: 0.92;
   transform: translateY(-1px);
 }
 
-.login-register {
+.register-login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,25 +136,30 @@
   color: #6d655e;
 }
 
+.register-login a {
+  color: #3f8f58;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-login a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 520px) {
-  .login-page {
+  .register-page {
     padding: 20px 14px;
   }
 
-  .login-content {
+  .register-content {
     padding: 30px 22px;
   }
 
-  .login-brand-name {
+  .register-brand-name {
     font-size: 25px;
   }
 
-  .login-content h1 {
+  .register-content h1 {
     font-size: 26px;
-  }
-
-  .login-options {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }

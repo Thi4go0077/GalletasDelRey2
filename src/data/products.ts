@@ -46,6 +46,60 @@ export const products: Product[] = [
     unitPrice: 2,
     unitsPerBox: 10,
   },
+  {
+    id: "mantequilla",
+    name: "Mantequilla",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de mantequilla",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
+  {
+    id: "pistacho",
+    name: "Pistacho",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de pistacho",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
+  {
+    id: "naranja",
+    name: "Naranja",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de naranja",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
+  {
+    id: "miel",
+    name: "Miel",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de miel",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
+  {
+    id: "arandanos",
+    name: "Arándanos",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de arándanos",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
+  {
+    id: "pasas al ron",
+    name: "Pasas al Ron",
+    image:
+      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+    alt: "Galletas de pasas al ron",
+    unitPrice: 2,
+    unitsPerBox: 10,
+  },
 ];
 
 export const initialCartQuantities = products.reduce(

@@ -74,6 +74,13 @@ function CartPage() {
     avena: 0,
     limon: 0,
     frutilla: 0,
+    mantequilla: 0,
+    pistacho: 0,
+    naranja: 0,
+    miel: 0,
+    arandanos: 0,
+    "pasas al ron": 0,
+
   });
 
   setPurchaseMessage(
@@ -243,7 +250,7 @@ function CartPage() {
             className="cart-back-link"
             to="/#sabores"
           >
-            Volver al catálogo
+            Volver al Menú
           </Link>
         </section>
       </main>
