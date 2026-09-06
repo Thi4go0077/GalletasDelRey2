@@ -86,23 +86,6 @@ function HomePage() {
               <article className="flavor-card" key={product.id}>
                 <img src={product.image} alt={product.alt} />
                 <h3>{product.name}</h3>
-                <div className="quantity-control" aria-label={`Cantidad de ${product.name}`}>
-                  <button
-                    aria-label={`Disminuir cantidad de ${product.name}`}
-                    onClick={() => handleQuantityChange(product.id, -1)}
-                    type="button"
-                  >
-                    -
-                  </button>
-                  <span aria-live="polite">{quantities[product.id]}</span>
-                  <button
-                    aria-label={`Aumentar cantidad de ${product.name}`}
-                    onClick={() => handleQuantityChange(product.id, 1)}
-                    type="button"
-                  >
-                    +
-                  </button>
-                </div>
               </article>
             ))}
           </div>

@@ -236,12 +236,11 @@ function CartPage() {
           ) : (
             <div className="cart-empty">
               <h2>
-                Todavía no seleccionaste productos.
+                ¡Gracias por tu compra!🍪
               </h2>
 
               <p>
-                Vuelve al catálogo para elegir tus
-                sabores favoritos.
+                Tu pedido ha sido recibido. Esperamos que disfrutes cada bocado de Galletas del Rey.
               </p>
             </div>
           )}

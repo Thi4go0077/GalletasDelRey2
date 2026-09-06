@@ -1,5 +1,10 @@
 import type { ProductId } from "../types/cart";
 
+export type ProductCategory =
+  | "Populares"
+  | "Clásicas"
+  | "Especiales";
+
 export interface Product {
   id: ProductId;
   name: string;
@@ -7,6 +12,7 @@ export interface Product {
   alt: string;
   unitPrice: number;
   unitsPerBox: number | null;
+  categories: ProductCategory[];
 }
 
 export const products: Product[] = [
@@ -18,6 +24,7 @@ export const products: Product[] = [
     alt: "Galletas artesanales doradas con detalles de coco",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Populares", "Clásicas"],
   },
   {
     id: "avena",
@@ -27,6 +34,7 @@ export const products: Product[] = [
     alt: "Galletas de avena apiladas en una mesa",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Populares", "Clásicas"],
   },
   {
     id: "limon",
@@ -36,6 +44,7 @@ export const products: Product[] = [
     alt: "Galletas de limón con una presentación clara y fresca",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Populares"],
   },
   {
     id: "frutilla",
@@ -45,6 +54,7 @@ export const products: Product[] = [
     alt: "Galletas acompañadas con frutillas frescas",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Populares"],
   },
   {
     id: "mantequilla",
@@ -54,6 +64,7 @@ export const products: Product[] = [
     alt: "Galletas de mantequilla",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Clásicas"],
   },
   {
     id: "pistacho",
@@ -63,6 +74,7 @@ export const products: Product[] = [
     alt: "Galletas de pistacho",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Especiales"],
   },
   {
     id: "naranja",
@@ -72,6 +84,7 @@ export const products: Product[] = [
     alt: "Galletas de naranja",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Clásicas"],
   },
   {
     id: "miel",
@@ -81,6 +94,7 @@ export const products: Product[] = [
     alt: "Galletas de miel",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Especiales"],
   },
   {
     id: "arandanos",
@@ -90,6 +104,7 @@ export const products: Product[] = [
     alt: "Galletas de arándanos",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Especiales"],
   },
   {
     id: "pasas al ron",
@@ -99,6 +114,7 @@ export const products: Product[] = [
     alt: "Galletas de pasas al ron",
     unitPrice: 2,
     unitsPerBox: 10,
+    categories: ["Especiales"],
   },
 ];
 
