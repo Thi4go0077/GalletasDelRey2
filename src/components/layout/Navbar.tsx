@@ -1,9 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
 import type { User } from "../../types/auth";
-
 import { authRepository } from "../../repositories/authRepository";
-
 import "./Navbar.css";
 
 interface NavbarProps {
@@ -12,22 +9,15 @@ interface NavbarProps {
 
 function Navbar({ user }: NavbarProps) {
   const navigate = useNavigate();
-
   const displayName = user?.name ?? "Invitado";
 
   const handleLogout = () => {
     authRepository.logout();
-
-    navigate("/login", {
-      replace: true,
-    });
+    navigate("/login", { replace: true });
   };
 
   return (
-    <header
-      className="navbar"
-      aria-label="Barra principal"
-    >
+    <header className="navbar" aria-label="Barra principal">
       <a
         className="navbar__logo"
         href="/inicio"
@@ -48,17 +38,13 @@ function Navbar({ user }: NavbarProps) {
         className="navbar__menu"
         aria-label="Navegación principal"
       >
-        <a href="/inicio">
-          Inicio
-        </a>
+        <a href="/inicio">Inicio</a>
 
-        <a href="/catalogo">
-          Catálogo
-        </a>
+        <a href="/catalogo">Catálogo</a>
 
-        <a href="#contacto">
-          Contacto
-        </a>
+        <a href="/pedidos">Mis pedidos</a>
+
+        <a href="#contacto">Contacto</a>
       </nav>
 
       <div className="navbar__account">

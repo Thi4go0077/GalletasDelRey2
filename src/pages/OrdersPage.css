@@ -1,0 +1,410 @@
+/* ================================
+   MIS PEDIDOS
+   GALLETAS DEL REY
+================================ */
+
+.orders-page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem 4rem;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgb(230 211 173 / 35%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8f1e3 0%,
+      #fffaf0 50%,
+      #f1e5d0 100%
+    );
+
+  color: #4a3022;
+}
+
+/* HERO */
+
+.orders-hero {
+  width: min(1180px, 100%);
+  margin: 0 auto 2rem;
+  padding: 2.5rem;
+
+  border: 1px solid rgb(117 78 45 / 12%);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ead9b9 0%,
+      #f5e8cf 55%,
+      #e4cda7 100%
+    );
+
+  box-shadow:
+    0 20px 45px rgb(74 48 34 / 14%);
+}
+
+.orders-hero__eyebrow {
+  margin: 0 0 0.5rem;
+
+  color: #87562f;
+
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.orders-hero h1 {
+  margin: 0;
+
+  color: #4a3022;
+
+  font-size: clamp(2rem, 5vw, 3.3rem);
+}
+
+.orders-hero p:last-child {
+  max-width: 650px;
+
+  margin: 0.8rem 0 0;
+
+  color: #674a36;
+
+  line-height: 1.6;
+}
+
+/* PANEL */
+
+.orders-panel {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 2rem;
+
+  border: 1px solid rgb(74 48 34 / 10%);
+  border-radius: 24px;
+
+  background: #fffdf8;
+
+  box-shadow:
+    0 20px 50px rgb(74 48 34 / 10%);
+}
+
+/* LISTA */
+
+.orders-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* PEDIDO */
+
+.order-card {
+  overflow: hidden;
+
+  border: 1px solid rgb(74 48 34 / 10%);
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px rgb(74 48 34 / 7%);
+}
+
+.order-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 1.4rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #faf1e1,
+      #fffaf1
+    );
+
+  border-bottom:
+    1px solid rgb(74 48 34 / 9%);
+}
+
+.order-card__label {
+  display: block;
+
+  margin-bottom: 0.2rem;
+
+  color: #987052;
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.order-card h2 {
+  margin: 0;
+
+  color: #4a3022;
+
+  font-size: 1.25rem;
+}
+
+.order-card__header p {
+  margin: 0.35rem 0 0;
+
+  color: #806755;
+
+  font-size: 0.88rem;
+}
+
+/* ESTADO */
+
+.order-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.6rem 0.9rem;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.order-status--pendiente {
+  background: #fff4cf;
+  color: #765d1d;
+}
+
+.order-status--confirmado {
+  background: #e8eef8;
+  color: #405979;
+}
+
+.order-status--en_preparacion {
+  background: #f8eadc;
+  color: #80512f;
+}
+
+.order-status--entregado {
+  background: #eee7d5;
+  color: #63512c;
+}
+
+/* PRODUCTOS */
+
+.order-card__items {
+  padding: 0.5rem 1.4rem;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 1rem 0;
+
+  border-bottom:
+    1px solid rgb(74 48 34 / 8%);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.order-item strong {
+  color: #4a3022;
+}
+
+.order-item span {
+  color: #806755;
+  font-size: 0.85rem;
+}
+
+/* FOOTER PEDIDO */
+
+.order-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 1.3rem 1.4rem;
+
+  background: #f8f1e3;
+
+  border-top:
+    1px solid rgb(74 48 34 / 8%);
+}
+
+.order-card__footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.order-card__footer span {
+  color: #806755;
+  font-size: 0.82rem;
+}
+
+.order-card__footer strong {
+  color: #4a3022;
+}
+
+.order-card__total {
+  text-align: right;
+}
+
+.order-card__total strong {
+  color: #87502f;
+
+  font-size: 1.25rem;
+}
+
+/* VACÍO */
+
+.orders-empty {
+  padding: 4rem 1.5rem;
+
+  text-align: center;
+}
+
+.orders-empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto 1.5rem;
+
+  border-radius: 50%;
+
+  background: #f1e4cf;
+
+  font-size: 2.8rem;
+}
+
+.orders-empty h2 {
+  margin: 0;
+
+  color: #4a3022;
+}
+
+.orders-empty p {
+  max-width: 520px;
+
+  margin: 0.8rem auto 1.5rem;
+
+  color: #6b5140;
+
+  line-height: 1.6;
+}
+
+.orders-empty__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem 1.4rem;
+
+  border: 1px solid #c8aa7d;
+  border-radius: 12px;
+
+  background: #ead9b9;
+  color: #4a3022;
+
+  font-weight: 900;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.orders-empty__button:hover {
+  transform: translateY(-2px);
+
+  background: #dfc59e;
+}
+
+/* VOLVER */
+
+.orders-back-link {
+  display: inline-flex;
+
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.1rem;
+
+  border: 1px solid #c8aa7d;
+  border-radius: 12px;
+
+  background: #f4e7d1;
+  color: #5a3928;
+
+  font-weight: 900;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.orders-back-link:hover {
+  background: #e8d4b3;
+
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .orders-page {
+    padding: 1.2rem 0.8rem 3rem;
+  }
+
+  .orders-hero {
+    padding: 1.8rem;
+    border-radius: 18px;
+  }
+
+  .orders-panel {
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .order-card__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .order-status {
+    align-self: flex-start;
+  }
+
+  .order-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .order-card__total {
+    text-align: left;
+  }
+}

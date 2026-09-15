@@ -2,7 +2,10 @@ import { useState } from "react";
 
 import type { FormEventHandler } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
 
 import { authRepository } from "../../repositories/authRepository";
 
@@ -14,28 +17,35 @@ function RegisterPage() {
   const [name, setName] = useState("");
   const [carnet, setCarnet] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] =
+    useState("");
 
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] =
+    useState(false);
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: FormEventHandler<
+    HTMLFormElement
+  > = (event) => {
     event.preventDefault();
 
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Las contraseñas no coinciden.");
+      setError(
+        "Las contraseñas no coinciden.",
+      );
       return;
     }
 
     setIsLoading(true);
 
-    const result = authRepository.register({
-      name,
-      carnet,
-      password,
-    });
+    const result =
+      authRepository.register({
+        name,
+        carnet,
+        password,
+      });
 
     setIsLoading(false);
 
@@ -44,7 +54,9 @@ function RegisterPage() {
       return;
     }
 
-    navigate("/inicio", { replace: true });
+    navigate("/inicio", {
+      replace: true,
+    });
   };
 
   return (
@@ -69,7 +81,8 @@ function RegisterPage() {
           <h1>Crea tu cuenta</h1>
 
           <p className="register-subtitle">
-            Completa el formulario para registrarte.
+            Regístrate como cliente para
+            realizar tus compras.
           </p>
 
           <form
@@ -83,13 +96,12 @@ function RegisterPage() {
 
               <input
                 id="fullName"
-                name="fullName"
                 type="text"
                 value={name}
                 onChange={(event) =>
                   setName(event.target.value)
                 }
-                placeholder="Ejemplo: Juan Pérez"
+                placeholder="Ejemplo: Thiago Pérez"
                 autoComplete="name"
                 required
               />
@@ -102,7 +114,6 @@ function RegisterPage() {
 
               <input
                 id="carnet"
-                name="carnet"
                 type="text"
                 value={carnet}
                 onChange={(event) =>
@@ -121,7 +132,6 @@ function RegisterPage() {
 
               <input
                 id="password"
-                name="password"
                 type="password"
                 value={password}
                 onChange={(event) =>
@@ -141,11 +151,12 @@ function RegisterPage() {
 
               <input
                 id="confirmPassword"
-                name="confirmPassword"
                 type="password"
                 value={confirmPassword}
                 onChange={(event) =>
-                  setConfirmPassword(event.target.value)
+                  setConfirmPassword(
+                    event.target.value,
+                  )
                 }
                 placeholder="Repita su contraseña"
                 minLength={6}
@@ -155,12 +166,12 @@ function RegisterPage() {
             </div>
 
             <div className="register-user-info">
-              <span className="register-user-icon">
-                👤
-              </span>
+              <span>👤</span>
 
               <div>
-                <strong>Tipo de cuenta</strong>
+                <strong>
+                  Tipo de cuenta
+                </strong>
 
                 <p>
                   Cliente / Usuario
@@ -172,7 +183,6 @@ function RegisterPage() {
               <p
                 className="register-error"
                 role="alert"
-                aria-live="polite"
               >
                 {error}
               </p>
@@ -185,7 +195,8 @@ function RegisterPage() {
               />
 
               <span>
-                Acepto los términos y condiciones.
+                Acepto los términos y
+                condiciones.
               </span>
             </label>
 
@@ -199,6 +210,20 @@ function RegisterPage() {
                 : "REGISTRARME"}
             </button>
           </form>
+
+          <div className="register-distributor">
+            <p>
+              ¿Quieres vender y distribuir
+              nuestros productos?
+            </p>
+
+            <Link
+              to="/registro-distribuidor"
+              className="distributor-register-link"
+            >
+              🚚 Registrarme como distribuidor
+            </Link>
+          </div>
 
           <div className="register-login">
             <span>

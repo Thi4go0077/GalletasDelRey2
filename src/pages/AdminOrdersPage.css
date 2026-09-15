@@ -1,0 +1,264 @@
+.admin-orders-page {
+  min-height: 100vh;
+  padding: 2rem;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgb(254 215 170 / 60%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7ed 0%,
+      #ffedd5 50%,
+      #fed7aa 100%
+    );
+  color: #431407;
+}
+
+.admin-orders-hero {
+  max-width: 1180px;
+  margin: 0 auto 2rem;
+  padding: 2.5rem;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    #fff7ed,
+    #fed7aa
+  );
+  border: 1px solid rgb(154 52 18 / 12%);
+  box-shadow: 0 20px 50px rgb(124 45 18 / 12%);
+}
+
+.admin-orders-hero p {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #9a3412;
+}
+
+.admin-orders-hero h1 {
+  margin: 0;
+  font-size: 2.3rem;
+}
+
+.admin-orders-hero span {
+  display: block;
+  margin-top: 0.6rem;
+  color: #78350f;
+}
+
+.admin-orders-panel {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 28px;
+  background: rgb(255 255 255 / 78%);
+  border: 1px solid rgb(154 52 18 / 12%);
+  box-shadow: 0 20px 50px rgb(124 45 18 / 10%);
+}
+
+.admin-orders-title {
+  margin-bottom: 1.5rem;
+}
+
+.admin-orders-title h2 {
+  margin: 0;
+}
+
+.admin-orders-title p {
+  margin: 0.3rem 0 0;
+  color: #78350f;
+}
+
+.admin-orders-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-order-card {
+  padding: 1.5rem;
+  border-radius: 22px;
+  background: #fffaf5;
+  border: 1px solid #fed7aa;
+  box-shadow: 0 10px 30px rgb(124 45 18 / 8%);
+}
+
+.admin-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #fed7aa;
+}
+
+.admin-order-header span,
+.admin-order-info span {
+  display: block;
+  font-size: 0.8rem;
+  color: #92400e;
+}
+
+.admin-order-header h3 {
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+}
+
+.admin-order-header p {
+  margin: 0;
+  color: #78350f;
+  font-size: 0.85rem;
+}
+
+.admin-order-status {
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.admin-order-status--pendiente {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-order-status--confirmado {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.admin-order-status--en_preparacion {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.admin-order-status--entregado {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-order-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+}
+
+.admin-order-info strong {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.admin-order-products {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fff7ed;
+}
+
+.admin-order-product {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.admin-order-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.35;
+}
+
+.admin-order-progress .active {
+  opacity: 1;
+}
+
+.admin-status-button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  background: #7c2d12;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-status-button:hover:not(:disabled) {
+  background: #9a3412;
+  transform: translateY(-1px);
+}
+
+.admin-status-button:disabled {
+  background: #a8a29e;
+  cursor: not-allowed;
+}
+
+.admin-orders-empty {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.admin-orders-empty div {
+  font-size: 3rem;
+}
+
+.admin-orders-empty h2 {
+  margin-bottom: 0.5rem;
+}
+
+.admin-orders-empty p {
+  color: #78350f;
+}
+
+.admin-orders-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #7c2d12;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.admin-orders-back:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .admin-orders-page {
+    padding: 1rem;
+  }
+
+  .admin-orders-hero,
+  .admin-orders-panel {
+    padding: 1.25rem;
+  }
+
+  .admin-orders-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .admin-order-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-order-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-status-button {
+    width: 100%;
+  }
+}

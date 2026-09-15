@@ -18,32 +18,81 @@ function LoginPage() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  if (authRepository.isAuthenticated()) {
-    const user = authRepository.getCurrentUser();
+  const currentUser = authRepository.getCurrentUser();
 
-    if (user?.role === "DISTRIBUIDOR") {
-      return <Navigate to="/distribuidor" replace />;
+  /*
+   * Si ya existe una sesión iniciada,
+   * enviamos al usuario directamente a su área.
+   */
+  if (authRepository.isAuthenticated()) {
+    if (currentUser?.role === "ADMIN") {
+      return (
+        <Navigate
+          to="/admin/pedidos"
+          replace
+        />
+      );
     }
 
-    return <Navigate to="/inicio" replace />;
+    if (currentUser?.role === "DISTRIBUIDOR") {
+      return (
+        <Navigate
+          to="/distribuidor"
+          replace
+        />
+      );
+    }
+
+    return (
+      <Navigate
+        to="/inicio"
+        replace
+      />
+    );
   }
 
-  const handleLogin = (credentials: LoginCredentials) => {
+  const handleLogin = (
+    credentials: LoginCredentials,
+  ) => {
     setError("");
 
-    const user = authRepository.login(credentials);
+    const user = authRepository.login(
+      credentials,
+    );
 
     if (!user) {
-      setError("El carnet o la contraseña son incorrectos.");
+      setError(
+        "El carnet o la contraseña son incorrectos.",
+      );
       return;
     }
 
+    /*
+     * ADMINISTRADOR
+     */
+    if (user.role === "ADMIN") {
+      navigate("/admin/pedidos", {
+        replace: true,
+      });
+      return;
+    }
+
+    /*
+     * DISTRIBUIDOR
+     */
     if (user.role === "DISTRIBUIDOR") {
-      navigate("/distribuidor", { replace: true });
+      navigate("/distribuidor", {
+        replace: true,
+      });
       return;
     }
 
-    navigate("/inicio", { replace: true });
+    /*
+     * USUARIO NORMAL
+     */
+    navigate("/inicio", {
+      replace: true,
+    });
   };
 
   return (
@@ -53,6 +102,7 @@ function LoginPage() {
         onSubmit={handleLogin}
       />
 
+      {/* ACCESO PARA DISTRIBUIDORES */}
       <section className="login-page__distributor">
         <div className="login-page__distributor-icon">
           🚚
@@ -63,11 +113,14 @@ function LoginPage() {
             ACCESO EXCLUSIVO
           </p>
 
-          <h2>¿Eres distribuidor?</h2>
+          <h2>
+            ¿Eres distribuidor?
+          </h2>
 
           <p>
-            Accede a tu área exclusiva para comprar por
-            lotes y obtener beneficios por volumen.
+            Accede a tu área exclusiva para
+            comprar por lotes y obtener
+            beneficios por volumen.
           </p>
         </div>
 

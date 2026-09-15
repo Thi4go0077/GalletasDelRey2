@@ -1,7 +1,7 @@
 [
   {
     "id": "user-1",
-    "name": "user1",
+    "name": "Consumidor",
     "carnet": "1234",
     "password": "admin123",
     "role": "ADMIN"

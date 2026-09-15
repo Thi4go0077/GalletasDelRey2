@@ -1,0 +1,538 @@
+/* =========================================
+   PERFIL DISTRIBUIDOR
+========================================= */
+
+.distributor-profile {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgb(254 215 170 / 50%),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #fffaf5 0%,
+      #fff7ed 50%,
+      #ffffff 100%
+    );
+
+  color: #431407;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.distributor-profile__content {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 45px 20px 80px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.distributor-profile__header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-bottom: 35px;
+}
+
+.distributor-profile__avatar {
+  width: 85px;
+  height: 85px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c2d12,
+      #c2410c
+    );
+
+  color: white;
+
+  font-size: 38px;
+
+  box-shadow:
+    0 15px 35px rgb(124 45 18 / 20%);
+}
+
+.distributor-profile__header p {
+  margin: 0 0 6px;
+
+  color: #c2410c;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.distributor-profile__header h1 {
+  margin: 0;
+
+  color: #431407;
+
+  font-size: 42px;
+
+  font-weight: 900;
+}
+
+.distributor-profile__header span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #78716c;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TARJETAS
+========================================= */
+
+.distributor-profile__card {
+  margin-bottom: 25px;
+
+  padding: 30px;
+
+  background: white;
+
+  border: 1px solid #fed7aa;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 15px 40px rgb(124 45 18 / 7%);
+}
+
+.distributor-profile__card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 28px;
+}
+
+.distributor-profile__card-title > span {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #fff7ed;
+
+  font-size: 25px;
+}
+
+.distributor-profile__card-title h2 {
+  margin: 0;
+
+  color: #431407;
+
+  font-size: 21px;
+}
+
+.distributor-profile__card-title p {
+  margin: 4px 0 0;
+
+  color: #a8a29e;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   GRID DATOS
+========================================= */
+
+.distributor-profile__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 17px;
+}
+
+.distributor-profile__field {
+  padding: 19px;
+
+  background: #fffaf7;
+
+  border: 1px solid #f3d7c3;
+
+  border-radius: 14px;
+}
+
+.distributor-profile__field span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #78716c;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+.distributor-profile__field strong {
+  color: #431407;
+
+  font-size: 15px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   ESTADO
+========================================= */
+
+.distributor-profile__status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 25px 28px;
+
+  margin: 35px 0;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0fdf4,
+      #dcfce7
+    );
+
+  border: 1px solid #bbf7d0;
+}
+
+.distributor-profile__status-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #16a34a;
+
+  color: white;
+
+  font-size: 27px;
+
+  font-weight: 900;
+}
+
+.distributor-profile__status span {
+  color: #15803d;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+.distributor-profile__status h2 {
+  margin: 4px 0;
+
+  color: #166534;
+
+  font-size: 20px;
+}
+
+.distributor-profile__status p {
+  margin: 0;
+
+  color: #4b5563;
+
+  font-size: 13px;
+}
+
+.distributor-profile__role {
+  margin-left: auto;
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: #7c2d12;
+
+  font-size: 12px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================
+   BENEFICIOS
+========================================= */
+
+.distributor-profile__benefits {
+  margin-top: 55px;
+}
+
+.distributor-profile__section-heading {
+  margin-bottom: 25px;
+
+  text-align: center;
+}
+
+.distributor-profile__section-heading p {
+  margin: 0 0 7px;
+
+  color: #c2410c;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.distributor-profile__section-heading h2 {
+  margin: 0;
+
+  color: #431407;
+
+  font-size: 32px;
+
+  font-weight: 900;
+}
+
+.distributor-profile__benefit-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.distributor-profile__benefit-grid article {
+  padding: 25px;
+
+  background: white;
+
+  border: 1px solid #fed7aa;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgb(124 45 18 / 6%);
+}
+
+.distributor-profile__benefit-grid article > span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: #fff7ed;
+
+  font-size: 30px;
+}
+
+.distributor-profile__benefit-grid h3 {
+  margin: 0 0 8px;
+
+  color: #7c2d12;
+
+  font-size: 19px;
+}
+
+.distributor-profile__benefit-grid p {
+  margin: 0 0 10px;
+
+  color: #78716c;
+
+  font-size: 13px;
+}
+
+.distributor-profile__benefit-grid strong {
+  color: #c2410c;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.distributor-profile__actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 35px;
+}
+
+.distributor-profile__back,
+.distributor-profile__logout {
+  padding: 14px 21px;
+
+  border-radius: 11px;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.distributor-profile__back {
+  border: 1px solid #fed7aa;
+
+  background: white;
+
+  color: #7c2d12;
+}
+
+.distributor-profile__logout {
+  border: none;
+
+  background: #7c2d12;
+
+  color: white;
+}
+
+.distributor-profile__back:hover,
+.distributor-profile__logout:hover {
+  transform: translateY(-2px);
+}
+
+.distributor-profile__back:hover {
+  background: #fff7ed;
+}
+
+.distributor-profile__logout:hover {
+  background: #9a3412;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .distributor-profile__benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distributor-profile__status {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .distributor-profile__role {
+    margin-left: 0;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .distributor-profile__content {
+    padding: 30px 15px 60px;
+  }
+
+  .distributor-profile__header {
+    align-items: flex-start;
+  }
+
+  .distributor-profile__avatar {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 18px;
+
+    font-size: 28px;
+  }
+
+  .distributor-profile__header h1 {
+    font-size: 32px;
+  }
+
+  .distributor-profile__card {
+    padding: 22px;
+  }
+
+  .distributor-profile__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distributor-profile__actions {
+    flex-direction: column;
+  }
+
+  .distributor-profile__back,
+  .distributor-profile__logout {
+    width: 100%;
+  }
+
+}

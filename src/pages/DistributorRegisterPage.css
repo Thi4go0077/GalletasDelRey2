@@ -1,0 +1,232 @@
+.distributor-register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgb(254 215 170 / 70%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7ed 0%,
+      #ffedd5 50%,
+      #fed7aa 100%
+    );
+  box-sizing: border-box;
+}
+
+.distributor-register-card {
+  width: 100%;
+  max-width: 850px;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgb(124 45 18 / 18%);
+  border: 1px solid rgb(154 52 18 / 12%);
+}
+
+.distributor-register-header {
+  padding: 24px 32px;
+  background: linear-gradient(
+    135deg,
+    #7c2d12,
+    #9a3412
+  );
+  color: white;
+}
+
+.distributor-register-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.distributor-register-brand > span {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 15%);
+  border-radius: 14px;
+  font-size: 28px;
+}
+
+.distributor-register-brand div {
+  display: flex;
+  flex-direction: column;
+}
+
+.distributor-register-brand strong {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.distributor-register-brand small {
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  opacity: 0.85;
+}
+
+.distributor-register-content {
+  padding: 38px;
+}
+
+.distributor-register-content h1 {
+  margin: 0;
+  color: #431407;
+  font-size: 32px;
+}
+
+.distributor-register-subtitle {
+  margin: 8px 0 30px;
+  color: #78716c;
+}
+
+.distributor-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.distributor-register-form h2 {
+  margin: 20px 0 2px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fed7aa;
+  color: #7c2d12;
+  font-size: 18px;
+}
+
+.distributor-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.distributor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.distributor-field label {
+  color: #431407;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.distributor-field input,
+.distributor-field select {
+  width: 100%;
+  padding: 13px 14px;
+  box-sizing: border-box;
+  border: 1px solid #e7c9b5;
+  border-radius: 12px;
+  background: #fffaf7;
+  color: #431407;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.distributor-field input:focus,
+.distributor-field select:focus {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgb(194 65 12 / 10%);
+  background: white;
+}
+
+.distributor-register-error {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.distributor-register-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #57534e;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.distributor-register-terms input {
+  margin-top: 3px;
+}
+
+.distributor-register-button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #7c2d12,
+    #c2410c
+  );
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.distributor-register-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgb(124 45 18 / 20%);
+}
+
+.distributor-register-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.distributor-register-footer {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+  color: #78716c;
+  font-size: 14px;
+}
+
+.distributor-register-footer a {
+  color: #9a3412;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.distributor-register-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .distributor-register-page {
+    padding: 20px 12px;
+  }
+
+  .distributor-register-content {
+    padding: 25px 20px;
+  }
+
+  .distributor-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .distributor-register-content h1 {
+    font-size: 26px;
+  }
+}

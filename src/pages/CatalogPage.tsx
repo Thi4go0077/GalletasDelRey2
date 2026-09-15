@@ -12,8 +12,8 @@ import "./CatalogPage.css";
 
 function formatCurrency(value: number): string {
   return new Intl.NumberFormat("es-BO", {
-    currency: "BOB",
     style: "currency",
+    currency: "BOB",
   }).format(value);
 }
 
@@ -28,17 +28,17 @@ function CatalogPage() {
 
   const [inputValues, setInputValues] = useState<
     Record<ProductId, string>
-  >(() =>
-    products.reduce(
+  >(() => {
+    const currentQuantities = cartService.getQuantities();
+
+    return products.reduce(
       (values, product) => ({
         ...values,
-        [product.id]: String(
-          cartService.getQuantities()[product.id] ?? 0,
-        ),
+        [product.id]: String(currentQuantities[product.id] ?? 0),
       }),
       {} as Record<ProductId, string>,
-    ),
-  );
+    );
+  });
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -75,8 +75,6 @@ function CatalogPage() {
     productId: ProductId,
     value: string,
   ) => {
-    // Permite dejar el campo completamente vacío
-    // mientras el usuario está escribiendo.
     if (value === "") {
       setInputValues((current) => ({
         ...current,
@@ -86,7 +84,6 @@ function CatalogPage() {
       return;
     }
 
-    // Solo permite números enteros.
     if (!/^\d+$/.test(value)) {
       return;
     }
@@ -115,8 +112,6 @@ function CatalogPage() {
   ) => {
     const value = inputValues[productId];
 
-    // Si quedó vacío, lo convertimos nuevamente en 0
-    // al salir del campo.
     if (value === "") {
       const nextQuantities = {
         ...quantities,
@@ -175,7 +170,9 @@ function CatalogPage() {
             <h2>Menú</h2>
 
             <nav>
-              <Link to="/">Inicio</Link>
+              <Link to="/inicio">
+                Inicio
+              </Link>
 
               <Link
                 to="/catalogo"
@@ -275,7 +272,9 @@ function CatalogPage() {
 
             {filteredProducts.length === 0 ? (
               <div className="no-results">
-                <h2>No encontramos ese sabor</h2>
+                <h2>
+                  No encontramos ese sabor
+                </h2>
 
                 <p>
                   Prueba con otro nombre o selecciona otra
@@ -306,13 +305,18 @@ function CatalogPage() {
                       />
 
                       <div className="catalog-card-content">
-                        <h2>{product.name}</h2>
+                        <h2>
+                          {product.name}
+                        </h2>
 
                         <p className="catalog-price">
                           {formatCurrency(
                             product.unitPrice,
                           )}
-                          <span> / unidad</span>
+                          <span>
+                            {" "}
+                            / unidad
+                          </span>
                         </p>
 
                         <div className="quantity-control">
