@@ -1,0 +1,130 @@
+.login-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgb(254 215 170 / 60%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7ed 0%,
+      #ffedd5 50%,
+      #fed7aa 100%
+    );
+}
+
+.login-page__distributor {
+  width: 380px;
+  min-height: 260px;
+
+  padding: 2rem;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: rgb(255 255 255 / 94%);
+
+  border: 1px solid rgb(124 45 18 / 12%);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 50px rgb(124 45 18 / 12%);
+}
+
+.login-page__distributor-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 1rem;
+
+  border-radius: 15px;
+
+  background: #7c2d12;
+
+  font-size: 1.7rem;
+}
+
+.login-page__distributor-label {
+  margin: 0 0 0.35rem;
+
+  color: #c2410c;
+
+  font-size: 0.7rem;
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+.login-page__distributor h2 {
+  margin: 0;
+
+  color: #431407;
+
+  font-size: 1.45rem;
+}
+
+.login-page__distributor-content > p:not(
+  .login-page__distributor-label
+) {
+  margin: 0.6rem 0 1.3rem;
+
+  color: #78350f;
+
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.login-page__distributor-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 0.9rem;
+
+  box-sizing: border-box;
+
+  border-radius: 13px;
+
+  background: #7c2d12;
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.login-page__distributor-button:hover {
+  background: #9a3412;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .login-page__distributor {
+    width: min(380px, 100%);
+  }
+}

@@ -1,13 +1,61 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import type { FormEventHandler } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import { authRepository } from "../../repositories/authRepository";
+
 import "./RegisterPage.css";
 
 function RegisterPage() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [carnet, setCarnet] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    setError("");
+
+    if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden.");
+      return;
+    }
+
+    setIsLoading(true);
+
+    const result = authRepository.register({
+      name,
+      carnet,
+      password,
+    });
+
+    setIsLoading(false);
+
+    if (!result.success) {
+      setError(result.message);
+      return;
+    }
+
+    navigate("/inicio", { replace: true });
+  };
+
   return (
     <main className="register-page">
       <section className="register-card">
         <header className="register-header">
           <div className="register-brand">
-            <span className="register-crown" aria-hidden="true">
+            <span
+              className="register-crown"
+              aria-hidden="true"
+            >
               ♛
             </span>
 
@@ -24,34 +72,64 @@ function RegisterPage() {
             Completa el formulario para registrarte.
           </p>
 
-          <form className="register-form">
+          <form
+            className="register-form"
+            onSubmit={handleSubmit}
+          >
             <div className="register-field">
-              <label htmlFor="fullName">Nombre completo</label>
+              <label htmlFor="fullName">
+                Nombre completo
+              </label>
+
               <input
                 id="fullName"
+                name="fullName"
                 type="text"
+                value={name}
+                onChange={(event) =>
+                  setName(event.target.value)
+                }
                 placeholder="Ejemplo: Juan Pérez"
+                autoComplete="name"
                 required
               />
             </div>
 
             <div className="register-field">
-              <label htmlFor="email">Correo electrónico</label>
+              <label htmlFor="carnet">
+                Carnet de identidad
+              </label>
+
               <input
-                id="email"
-                type="email"
-                placeholder="ejemplo@correo.com"
+                id="carnet"
+                name="carnet"
+                type="text"
+                value={carnet}
+                onChange={(event) =>
+                  setCarnet(event.target.value)
+                }
+                placeholder="Ejemplo: 12345678"
+                autoComplete="username"
                 required
               />
             </div>
 
             <div className="register-field">
-              <label htmlFor="password">Contraseña</label>
+              <label htmlFor="password">
+                Contraseña
+              </label>
+
               <input
                 id="password"
+                name="password"
                 type="password"
+                value={password}
+                onChange={(event) =>
+                  setPassword(event.target.value)
+                }
                 placeholder="Mínimo 6 caracteres"
                 minLength={6}
+                autoComplete="new-password"
                 required
               />
             </div>
@@ -60,42 +138,76 @@ function RegisterPage() {
               <label htmlFor="confirmPassword">
                 Confirmar contraseña
               </label>
+
               <input
                 id="confirmPassword"
+                name="confirmPassword"
                 type="password"
+                value={confirmPassword}
+                onChange={(event) =>
+                  setConfirmPassword(event.target.value)
+                }
                 placeholder="Repita su contraseña"
                 minLength={6}
+                autoComplete="new-password"
                 required
               />
             </div>
 
-            <div className="register-field">
-              <label htmlFor="userType">Tipo de usuario</label>
+            <div className="register-user-info">
+              <span className="register-user-icon">
+                👤
+              </span>
 
-              <select id="userType" defaultValue="" required>
-                <option value="" disabled>
-                  Selecciona una opción
-                </option>
-                <option value="cliente">Cliente</option>
-                <option value="administrador">Administrador</option>
-              </select>
+              <div>
+                <strong>Tipo de cuenta</strong>
+
+                <p>
+                  Cliente / Usuario
+                </p>
+              </div>
             </div>
 
+            {error && (
+              <p
+                className="register-error"
+                role="alert"
+                aria-live="polite"
+              >
+                {error}
+              </p>
+            )}
+
             <label className="register-terms">
-              <input type="checkbox" required />
+              <input
+                type="checkbox"
+                required
+              />
+
               <span>
                 Acepto los términos y condiciones.
               </span>
             </label>
 
-            <button type="submit" className="register-button">
-              REGISTRARME
+            <button
+              type="submit"
+              className="register-button"
+              disabled={isLoading}
+            >
+              {isLoading
+                ? "CREANDO CUENTA..."
+                : "REGISTRARME"}
             </button>
           </form>
 
           <div className="register-login">
-            <span>¿Ya tienes una cuenta?</span>
-            <Link to="/login">Iniciar sesión</Link>
+            <span>
+              ¿Ya tienes una cuenta?
+            </span>
+
+            <Link to="/login">
+              Iniciar sesión
+            </Link>
           </div>
         </div>
       </section>

@@ -1,9 +1,15 @@
 import { useMemo, useState } from "react";
+
 import { Link } from "react-router-dom";
+
 import Navbar from "../components/layout/Navbar";
+
 import { products } from "../data/products";
+
 import { authRepository } from "../repositories/authRepository";
+
 import { cartService } from "../services/cartService";
+
 import type { PaymentMethod } from "../types/cart";
 
 function formatCurrency(value: number): string {
@@ -13,22 +19,12 @@ function formatCurrency(value: number): string {
   }).format(value);
 }
 
-function getDiscountRate(totalBoxes: number): number {
-  if (totalBoxes >= 10) {
-    return 0.15;
-  }
-
-  if (totalBoxes >= 5) {
-    return 0.05;
-  }
-
-  return 0;
-}
-
 function CartPage() {
   const user = authRepository.getCurrentUser();
+
   const [paymentMethod, setPaymentMethod] =
     useState<PaymentMethod>("cash");
+
   const [purchaseMessage, setPurchaseMessage] = useState("");
 
   const quantities = cartService.getQuantities();
@@ -45,63 +41,50 @@ function CartPage() {
     0,
   );
 
-  // Cantidad total de unidades del carrito
-  const totalUnits = selectedProducts.reduce(
-    (total, product) => total + quantities[product.id],
-    0,
-  );
-
-  // Cada caja contiene 10 unidades
-  const totalBoxes = totalUnits / 10;
-
-  // Descuento automático según la cantidad total de cajas
-  const discountRate = getDiscountRate(totalBoxes);
-
-  // Monto del descuento
-  const volumeDiscount = subtotal * discountRate;
-
-  // Total final
-  const total = Math.max(0, subtotal - volumeDiscount);
+  // Los clientes no tienen descuentos por volumen.
+  const total = subtotal;
 
   const handlePurchase = () => {
-  const readablePaymentMethod =
-    paymentMethod === "cash"
-      ? "pago en efectivo"
-      : "pago con QR";
+    const readablePaymentMethod =
+      paymentMethod === "cash"
+        ? "pago en efectivo"
+        : "pago con QR";
 
-  cartService.setQuantities({
-    coco: 0,
-    avena: 0,
-    limon: 0,
-    frutilla: 0,
-    mantequilla: 0,
-    pistacho: 0,
-    naranja: 0,
-    miel: 0,
-    arandanos: 0,
-    "pasas al ron": 0,
+    cartService.setQuantities({
+      coco: 0,
+      avena: 0,
+      limon: 0,
+      frutilla: 0,
+      mantequilla: 0,
+      pistacho: 0,
+      naranja: 0,
+      miel: 0,
+      arandanos: 0,
+      "pasas al ron": 0,
+    });
 
-  });
-
-  setPurchaseMessage(
-    `Pedido preparado con ${readablePaymentMethod}. La confirmación se implementará en una próxima etapa.`,
-  );
-};
+    setPurchaseMessage(
+      `Pedido preparado con ${readablePaymentMethod}. La confirmación se implementará en una próxima etapa.`,
+    );
+  };
 
   return (
     <>
       <Navbar user={user} />
 
       <main className="cart-page">
-        <section className="cart-hero" aria-labelledby="cart-title">
+        <section
+          className="cart-hero"
+          aria-labelledby="cart-title"
+        >
           <p className="cart-hero__eyebrow">
-            Compra más y paga menos
+            Tu carrito de compras
           </p>
 
           <h1 id="cart-title">Mi Carrito</h1>
 
           <p className="cart-hero__description">
-            Descuentos automáticos por volumen
+            Revisa tus productos antes de realizar tu pedido.
           </p>
         </section>
 
@@ -170,22 +153,18 @@ function CartPage() {
               >
                 <div>
                   <span>Subtotal</span>
-                  <strong>{formatCurrency(subtotal)}</strong>
-                </div>
-
-                <div>
-                  <span>
-                    Descuento por volumen ({discountRate * 100}%)
-                  </span>
 
                   <strong>
-                    {formatCurrency(volumeDiscount)}
+                    {formatCurrency(subtotal)}
                   </strong>
                 </div>
 
                 <div className="cart-summary__total">
                   <span>Total</span>
-                  <strong>{formatCurrency(total)}</strong>
+
+                  <strong>
+                    {formatCurrency(total)}
+                  </strong>
                 </div>
               </div>
 
@@ -236,11 +215,12 @@ function CartPage() {
           ) : (
             <div className="cart-empty">
               <h2>
-                ¡Gracias por tu compra!🍪
+                ¡Gracias por tu compra! 🍪
               </h2>
 
               <p>
-                Tu pedido ha sido recibido. Esperamos que disfrutes cada bocado de Galletas del Rey.
+                Tu pedido ha sido recibido. Esperamos que
+                disfrutes cada bocado de Galletas del Rey.
               </p>
             </div>
           )}

@@ -1,0 +1,145 @@
+.distributor-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgb(254 215 170 / 75%),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7ed 0%,
+      #ffedd5 50%,
+      #fed7aa 100%
+    );
+}
+
+.distributor-login__card {
+  width: min(100%, 460px);
+  padding: 2.5rem;
+  text-align: center;
+  background: rgb(255 255 255 / 94%);
+  border: 1px solid rgb(154 52 18 / 15%);
+  border-radius: 28px;
+  box-shadow: 0 25px 70px rgb(124 45 18 / 18%);
+}
+
+.distributor-login__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #7c2d12;
+  font-size: 2.5rem;
+  box-shadow: 0 10px 25px rgb(124 45 18 / 25%);
+}
+
+.distributor-login__eyebrow {
+  margin: 0 0 0.5rem;
+  color: #9a3412;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.distributor-login__card h1 {
+  margin: 0;
+  color: #431407;
+  font-size: 2rem;
+}
+
+.distributor-login__description {
+  margin: 1rem 0 2rem;
+  color: #7c2d12;
+  line-height: 1.6;
+}
+
+.distributor-login__form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.65rem;
+}
+
+.distributor-login__form label {
+  color: #431407;
+  font-weight: 700;
+}
+
+.distributor-login__form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.7rem;
+  border: 1px solid rgb(154 52 18 / 20%);
+  border-radius: 12px;
+  background: #fffaf5;
+  color: #431407;
+  font-size: 1rem;
+  outline: none;
+}
+
+.distributor-login__form input:focus {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgb(194 65 12 / 12%);
+}
+
+.distributor-login__form button {
+  margin-top: 0.7rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 14px;
+  background: #7c2d12;
+  color: white;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.distributor-login__form button:hover {
+  background: #9a3412;
+  transform: translateY(-2px);
+}
+
+.distributor-login__error {
+  margin: 0.2rem 0;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.distributor-login__back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #9a3412;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.distributor-login__back:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .distributor-login {
+    padding: 1rem;
+  }
+
+  .distributor-login__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .distributor-login__card h1 {
+    font-size: 1.6rem;
+  }
+}
+

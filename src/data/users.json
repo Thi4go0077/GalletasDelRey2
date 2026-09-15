@@ -12,5 +12,12 @@
     "carnet": "12345",
     "password": "usuario123",
     "role": "USUARIO"
+  },
+  {
+    "id": "distribuidor-1",
+    "name": "Distribuidor Principal",
+    "carnet": "distribuidor1",
+    "password": "distribuidor123",
+    "role": "DISTRIBUIDOR"
   }
 ]
