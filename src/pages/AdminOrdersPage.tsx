@@ -1,15 +1,20 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import AdminNavbar from "../components/layout/AdminNavbar";
 import { authRepository } from "../repositories/authRepository";
 import { orderService } from "../services/orderService";
 import type { OrderStatus } from "../types/order";
+
 import "./AdminOrdersPage.css";
 
 type OrderFilter = "TODOS" | OrderStatus;
 
-const statusOptions: { value: OrderStatus; label: string; icon: string }[] = [
+const statusOptions: {
+  value: OrderStatus;
+  label: string;
+  icon: string;
+}[] = [
   { value: "PENDIENTE", label: "Pendientes", icon: "🟡" },
   { value: "CONFIRMADO", label: "Confirmados", icon: "🔵" },
   { value: "EN_PREPARACION", label: "En preparación", icon: "🟠" },
@@ -86,9 +91,6 @@ function getNextStatus(status: OrderStatus): OrderStatus | null {
       return "EN_PREPARACION";
     case "EN_PREPARACION":
       return "ENTREGADO";
-    case "ENTREGADO":
-    case "RECHAZADO":
-      return null;
     default:
       return null;
   }
@@ -102,10 +104,6 @@ function getNextButtonText(status: OrderStatus): string {
       return "📦 Pasar a preparación";
     case "EN_PREPARACION":
       return "🚚 Marcar como entregado";
-    case "ENTREGADO":
-      return "✓ Pedido finalizado";
-    case "RECHAZADO":
-      return "Pedido rechazado";
     default:
       return "Cambiar estado";
   }
@@ -113,15 +111,23 @@ function getNextButtonText(status: OrderStatus): string {
 
 function AdminOrdersPage() {
   const user = authRepository.getCurrentUser();
+
   const [orders, setOrders] = useState(() => orderService.getAll());
   const [filter, setFilter] = useState<OrderFilter>("TODOS");
+
+  const refreshOrders = () => {
+    setOrders(orderService.getAll());
+  };
 
   if (!user || user.role !== "ADMIN") {
     return (
       <main className="admin-orders-page">
         <section className="admin-orders-panel">
           <h1>Acceso restringido</h1>
-          <p>Debes iniciar sesión como administrador para ver esta página.</p>
+          <p>
+            Debes iniciar sesión como administrador para ver esta página.
+          </p>
+
           <Link className="admin-orders-back" to="/admin-login">
             Ir al inicio de sesión
           </Link>
@@ -130,17 +136,16 @@ function AdminOrdersPage() {
     );
   }
 
-  const refreshOrders = () => {
-    setOrders(orderService.getAll());
-  };
-
   const handleChangeStatus = (
     orderId: string,
     currentStatus: OrderStatus,
   ) => {
     const nextStatus = getNextStatus(currentStatus);
 
-    if (!nextStatus) return;
+    if (!nextStatus) {
+      window.alert("Este pedido ya no admite más cambios de estado.");
+      return;
+    }
 
     const confirmed = window.confirm(
       `¿Quieres cambiar el estado del pedido a "${getStatusLabel(nextStatus)}"?`,
@@ -148,8 +153,18 @@ function AdminOrdersPage() {
 
     if (!confirmed) return;
 
-    orderService.updateStatus(orderId, nextStatus);
+    const updated = orderService.updateStatus(orderId, nextStatus);
+
+    if (!updated) {
+      window.alert(
+        "No se encontró el pedido. Actualiza la lista e inténtalo de nuevo.",
+      );
+      refreshOrders();
+      return;
+    }
+
     refreshOrders();
+    window.alert("El estado del pedido se actualizó correctamente.");
   };
 
   const handleRejectOrder = (orderId: string) => {
@@ -170,19 +185,63 @@ function AdminOrdersPage() {
 
     if (!confirmed) return;
 
-    orderService.updateStatus(orderId, "RECHAZADO", reason.trim());
+    const updated = orderService.updateStatus(
+      orderId,
+      "RECHAZADO",
+      reason.trim(),
+    );
+
+    if (!updated) {
+      window.alert("No se encontró el pedido.");
+      refreshOrders();
+      return;
+    }
+
     refreshOrders();
+    window.alert("El pedido fue rechazado correctamente.");
+  };
+
+  const handleDeleteOrder = (orderId: string) => {
+    const confirmed = window.confirm(
+      `¿Estás seguro de que quieres eliminar el pedido ${orderId}?\n\nEsta acción no se puede deshacer.`,
+    );
+
+    if (!confirmed) return;
+
+    const deleted = orderService.delete(orderId);
+
+    if (!deleted) {
+      window.alert("No se encontró el pedido que quieres eliminar.");
+      refreshOrders();
+      return;
+    }
+
+    refreshOrders();
+    window.alert("El pedido se eliminó correctamente.");
+  };
+
+  const handleRefresh = () => {
+    refreshOrders();
+    window.alert("Lista de pedidos actualizada.");
   };
 
   const counts: Record<OrderFilter, number> = {
     TODOS: orders.length,
-    PENDIENTE: orders.filter((order) => order.status === "PENDIENTE").length,
-    CONFIRMADO: orders.filter((order) => order.status === "CONFIRMADO").length,
+    PENDIENTE: orders.filter(
+      (order) => order.status === "PENDIENTE",
+    ).length,
+    CONFIRMADO: orders.filter(
+      (order) => order.status === "CONFIRMADO",
+    ).length,
     EN_PREPARACION: orders.filter(
       (order) => order.status === "EN_PREPARACION",
     ).length,
-    ENTREGADO: orders.filter((order) => order.status === "ENTREGADO").length,
-    RECHAZADO: orders.filter((order) => order.status === "RECHAZADO").length,
+    ENTREGADO: orders.filter(
+      (order) => order.status === "ENTREGADO",
+    ).length,
+    RECHAZADO: orders.filter(
+      (order) => order.status === "RECHAZADO",
+    ).length,
   };
 
   const visibleOrders =
@@ -199,8 +258,8 @@ function AdminOrdersPage() {
           <p>GESTIÓN DE PEDIDOS</p>
           <h1>Administración de pedidos</h1>
           <span>
-            Revisa las compras, confirma pedidos y mantén informados a tus
-            clientes durante cada etapa.
+            Revisa las compras, confirma pedidos y mantén informados
+            a tus clientes durante cada etapa.
           </span>
         </section>
 
@@ -214,7 +273,7 @@ function AdminOrdersPage() {
             <button
               type="button"
               className="admin-status-button"
-              onClick={refreshOrders}
+              onClick={handleRefresh}
             >
               ↻ Actualizar
             </button>
@@ -223,7 +282,9 @@ function AdminOrdersPage() {
           <div className="admin-order-filters">
             <button
               type="button"
-              className={`admin-order-filter ${filter === "TODOS" ? "active" : ""}`}
+              className={`admin-order-filter ${
+                filter === "TODOS" ? "active" : ""
+              }`}
               onClick={() => setFilter("TODOS")}
             >
               Todos <span>{counts.TODOS}</span>
@@ -247,11 +308,15 @@ function AdminOrdersPage() {
           {visibleOrders.length === 0 ? (
             <div className="admin-orders-empty">
               <div>{filter === "TODOS" ? "🧾" : "📭"}</div>
+
               <h2>
                 {filter === "TODOS"
                   ? "No hay pedidos todavía"
-                  : `No hay pedidos ${getStatusLabel(filter as OrderStatus).toLowerCase()}s`}
+                  : `No hay pedidos con estado: ${getStatusLabel(
+                      filter as OrderStatus,
+                    )}`}
               </h2>
+
               <p>
                 {filter === "TODOS"
                   ? "Cuando un cliente realice una compra, aparecerá aquí."
@@ -265,7 +330,10 @@ function AdminOrdersPage() {
                 const currentStep = progressSteps.indexOf(order.status);
 
                 return (
-                  <article className="admin-order-card" key={order.id}>
+                  <article
+                    className="admin-order-card"
+                    key={order.id}
+                  >
                     <header className="admin-order-header">
                       <div>
                         <span>Pedido</span>
@@ -350,6 +418,7 @@ function AdminOrdersPage() {
                             >
                               <span>{getStatusIcon(step)}</span>
                               <small>{getStatusLabel(step)}</small>
+
                               {index < progressSteps.length - 1 && (
                                 <span aria-hidden="true">→</span>
                               )}
@@ -360,8 +429,8 @@ function AdminOrdersPage() {
                     )}
 
                     <footer className="admin-order-footer">
-                      {nextStatus ? (
-                        <div className="admin-order-actions">
+                      <div className="admin-order-actions">
+                        {nextStatus && (
                           <button
                             type="button"
                             className="admin-status-button"
@@ -371,24 +440,31 @@ function AdminOrdersPage() {
                           >
                             {getNextButtonText(order.status)}
                           </button>
+                        )}
 
-                          {order.status === "PENDIENTE" && (
-                            <button
-                              type="button"
-                              className="admin-reject-button"
-                              onClick={() => handleRejectOrder(order.id)}
-                            >
-                              ✕ Rechazar pedido
-                            </button>
-                          )}
-                        </div>
-                      ) : (
+                        {order.status === "PENDIENTE" && (
+                          <button
+                            type="button"
+                            className="admin-reject-button"
+                            onClick={() => handleRejectOrder(order.id)}
+                          >
+                            ✕ Rechazar pedido
+                          </button>
+                        )}
+
+                        <button
+                          type="button"
+                          className="admin-reject-button"
+                          onClick={() => handleDeleteOrder(order.id)}
+                        >
+                          🗑 Eliminar pedido
+                        </button>
+                      </div>
+
+                      {order.status === "ENTREGADO" && (
                         <p className="admin-order-finished">
-                          {order.status === "ENTREGADO"
-                            ? "✓ Pedido entregado y finalizado."
-                            : "Este pedido está rechazado y no admite más cambios."}
+                          ✓ Pedido entregado y finalizado.
                         </p>
-                        
                       )}
                     </footer>
                   </article>
@@ -397,8 +473,8 @@ function AdminOrdersPage() {
             </div>
           )}
 
-          <Link className="admin-orders-back" to="/admin/pedidos">
-            ← Volver a pedidos
+          <Link className="admin-orders-back" to="/admin">
+            ← Volver al panel principal
           </Link>
         </section>
       </main>

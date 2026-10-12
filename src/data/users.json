@@ -1,9 +1,17 @@
+
 [
   {
-    "id": "user-1",
-    "name": "Consumidor",
-    "carnet": "1234",
-    "password": "admin123",
+    "id": "admin-thiago",
+    "name": "Thiago",
+    "carnet": "Thiago",
+    "password": "thiago318",
+    "role": "ADMIN"
+  },
+  {
+    "id": "admin-edgar",
+    "name": "Edgar",
+    "carnet": "Edgar",
+    "password": "abc4321",
     "role": "ADMIN"
   },
   {

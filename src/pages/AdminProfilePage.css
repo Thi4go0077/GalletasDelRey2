@@ -1,0 +1,137 @@
+.admin-profile-page {
+  min-height: calc(100vh - 80px);
+  padding: 36px clamp(16px, 4vw, 56px) 56px;
+  background: #faf7f2;
+  color: #392719;
+}
+
+.admin-profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 32px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #59331f, #8d4c29);
+  color: #fffaf4;
+}
+
+.admin-profile-avatar {
+  display: grid;
+  flex: 0 0 76px;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  border-radius: 22px;
+  background: rgb(255 255 255 / 10%);
+  font-size: 36px;
+}
+
+.admin-profile-hero span {
+  color: #f5d1ad;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.admin-profile-hero h1 {
+  margin: 9px 0;
+  font-size: clamp(25px, 4vw, 36px);
+}
+
+.admin-profile-hero p {
+  margin: 0;
+  color: #f5e5d7;
+  line-height: 1.6;
+}
+
+.admin-profile-card {
+  margin-top: 24px;
+  padding: 26px;
+  border: 1px solid #eee2d6;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 8px 22px rgb(74 42 24 / 4%);
+}
+
+.admin-profile-card h2 {
+  margin: 0 0 20px;
+  color: #56331f;
+  font-size: 21px;
+}
+
+.admin-profile-card > p {
+  color: #806b59;
+  line-height: 1.7;
+}
+
+.admin-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-profile-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 17px;
+  border: 1px solid #f0e5da;
+  border-radius: 12px;
+  background: #fffcf8;
+  overflow-wrap: anywhere;
+}
+
+.admin-profile-grid span {
+  color: #8a7665;
+  font-size: 13px;
+}
+
+.admin-profile-grid strong {
+  color: #56331f;
+  font-size: 15px;
+}
+
+.admin-profile-grid .admin-profile-active {
+  color: #16804a;
+}
+
+.admin-profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.admin-profile-actions a {
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #59331f;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.admin-profile-actions a:hover {
+  background: #7c4325;
+}
+
+.admin-profile-card a {
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .admin-profile-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .admin-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-profile-card {
+    padding: 20px;
+  }
+}

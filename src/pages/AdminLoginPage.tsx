@@ -69,12 +69,12 @@ function AdminLoginPage() {
         </p>
 
         <form onSubmit={handleSubmit} className="admin-login-form">
-          <label htmlFor="admin-carnet">Carné de identidad</label>
+          <label htmlFor="admin-carnet">Usuario administrador</label>
           <input
             id="admin-carnet"
             type="text"
             autoComplete="username"
-            placeholder="Ingresa tu carné"
+            placeholder="Escribe Thiago o Edgar"
             value={carnet}
             onChange={(event) => setCarnet(event.target.value)}
             required

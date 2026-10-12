@@ -1,4 +1,3 @@
-
 import { NavLink, useNavigate } from "react-router-dom";
 import { authRepository } from "../../repositories/authRepository";
 import "./AdminNavbar.css";
@@ -14,7 +13,7 @@ function AdminNavbar() {
 
   return (
     <header className="admin-navbar">
-      <NavLink to="/admin/pedidos" className="admin-navbar__brand">
+      <NavLink to="/admin" className="admin-navbar__brand">
         <img src="/logo/logo.jpeg" alt="Galletas Del Rey" />
         <div>
           <strong>GALLETAS DEL REY</strong>
@@ -23,8 +22,16 @@ function AdminNavbar() {
       </NavLink>
 
       <nav className="admin-navbar__links">
+        <NavLink to="/admin" end>
+          🏠 Panel principal
+        </NavLink>
+
         <NavLink to="/admin/pedidos">
           📋 Gestión de pedidos
+        </NavLink>
+
+        <NavLink to="/admin/perfil">
+          👤 Mi perfil
         </NavLink>
       </nav>
 

@@ -1,130 +1,153 @@
 .login-page {
   min-height: 100vh;
-  padding: 2rem 1rem;
-
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
-
-  box-sizing: border-box;
-
+  padding: 36px 24px;
   background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgb(254 215 170 / 60%),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #fff7ed 0%,
-      #ffedd5 50%,
-      #fed7aa 100%
-    );
+    radial-gradient(circle at top left, #fff8d9 0, transparent 35%),
+    #f7f4ec;
 }
 
-.login-page__distributor {
-  width: 380px;
-  min-height: 260px;
+.login-page__layout {
+  width: min(100%, 1080px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+  align-items: center;
+  gap: 28px;
+}
 
-  padding: 2rem;
-  box-sizing: border-box;
+.login-page__main {
+  min-width: 0;
+}
 
+.login-page__access {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  background: rgb(255 255 255 / 94%);
-
-  border: 1px solid rgb(124 45 18 / 12%);
-  border-radius: 24px;
-
-  box-shadow:
-    0 20px 50px rgb(124 45 18 / 12%);
+  gap: 20px;
 }
 
-.login-page__distributor-icon {
-  width: 55px;
-  height: 55px;
+.login-page__access-card {
+  padding: 26px;
+  border: 1px solid #eadfd2;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(66, 43, 27, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.login-page__access-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(66, 43, 27, 0.11);
+}
+
+.login-page__access-icon {
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  margin-bottom: 1rem;
-
+  margin-bottom: 16px;
   border-radius: 15px;
-
-  background: #7c2d12;
-
-  font-size: 1.7rem;
+  font-size: 25px;
 }
 
-.login-page__distributor-label {
-  margin: 0 0 0.35rem;
+.login-page__access-card--distributor .login-page__access-icon {
+  background: #fff3d2;
+}
 
-  color: #c2410c;
+.login-page__access-card--admin .login-page__access-icon {
+  background: #f2e8df;
+}
 
-  font-size: 0.7rem;
+.login-page__access-label {
+  margin: 0 0 7px;
+  color: #987044;
+  font-size: 11px;
   font-weight: 900;
-
-  letter-spacing: 0.12em;
+  letter-spacing: 1.5px;
 }
 
-.login-page__distributor h2 {
+.login-page__access-card h2 {
   margin: 0;
-
-  color: #431407;
-
-  font-size: 1.45rem;
+  color: #3f3025;
+  font-size: 22px;
 }
 
-.login-page__distributor-content > p:not(
-  .login-page__distributor-label
-) {
-  margin: 0.6rem 0 1.3rem;
-
-  color: #78350f;
-
-  line-height: 1.5;
-  font-size: 0.9rem;
+.login-page__access-description {
+  margin: 12px 0 20px;
+  color: #76685c;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-.login-page__distributor-button {
+.login-page__access-button {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 100%;
-
-  padding: 0.9rem;
-
-  box-sizing: border-box;
-
-  border-radius: 13px;
-
-  background: #7c2d12;
-  color: white;
-
-  text-decoration: none;
-
+  gap: 7px;
+  padding: 12px 16px;
+  border-radius: 11px;
+  color: #ffffff;
+  font-size: 14px;
   font-weight: 800;
-
-  transition: 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.login-page__distributor-button:hover {
-  background: #9a3412;
-  transform: translateY(-2px);
+.login-page__access-button:hover {
+  transform: translateY(-1px);
 }
 
-@media (max-width: 900px) {
-  .login-page {
-    flex-direction: column;
-    gap: 1.5rem;
+.login-page__access-button--distributor {
+  background: #3f8f58;
+}
+
+.login-page__access-button--distributor:hover {
+  background: #327747;
+}
+
+.login-page__access-button--admin {
+  background: #59331f;
+}
+
+.login-page__access-button--admin:hover {
+  background: #75462c;
+}
+
+@media (max-width: 850px) {
+  .login-page__layout {
+    width: min(100%, 520px);
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .login-page__distributor {
-    width: min(380px, 100%);
+  .login-page__access {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .login-page__access-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-page__access {
+    grid-template-columns: 1fr;
+  }
+
+  .login-page__access-card {
+    padding: 22px;
   }
 }

@@ -30,11 +30,14 @@ import DistributorProfilePage from "../pages/DistributorProfilePage";
 import DistributorLotsPage from "../pages/DistributorLotsPage";
 import DistributorOrdersPage from "../pages/DistributorOrdersPage";
 import DistributorBenefitsPage from "../pages/DistributorBenefitsPage";
+
 // =========================
 // ADMINISTRACIÓN
 // =========================
 import AdminLoginPage from "../pages/AdminLoginPage";
+import AdminDashboardPage from "../pages/AdminDashboardPage";
 import AdminOrdersPage from "../pages/AdminOrdersPage";
+import AdminProfilePage from "../pages/AdminProfilePage";
 
 // =========================
 // PROTECCIÓN DE RUTAS
@@ -182,10 +185,28 @@ function AppRoutes() {
         />
 
         <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <AdminDashboardPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/admin/pedidos"
           element={
             <ProtectedRoute allowedRoles={["ADMIN"]}>
               <AdminOrdersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/perfil"
+          element={
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
+              <AdminProfilePage />
             </ProtectedRoute>
           }
         />
