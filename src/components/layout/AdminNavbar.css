@@ -1,0 +1,134 @@
+
+.admin-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 5%;
+  background: #fffaf3;
+  border-bottom: 1px solid #ead8c5;
+  box-shadow: 0 4px 18px rgb(80 45 20 / 7%);
+}
+
+.admin-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #713f24;
+  text-decoration: none;
+}
+
+.admin-navbar__brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.admin-navbar__brand div,
+.admin-navbar__user div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-navbar__brand strong {
+  font-size: 15px;
+  letter-spacing: 0.4px;
+}
+
+.admin-navbar__brand span,
+.admin-navbar__user span:last-child {
+  color: #92745e;
+  font-size: 12px;
+}
+
+.admin-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-navbar__links a {
+  padding: 11px 15px;
+  border-radius: 10px;
+  color: #68452f;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.admin-navbar__links a:hover,
+.admin-navbar__links a.active {
+  background: #7c4325;
+  color: white;
+}
+
+.admin-navbar__account {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.admin-navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #58351f;
+  font-size: 13px;
+}
+
+.admin-navbar__avatar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffedd5;
+  font-size: 20px;
+}
+
+.admin-navbar__account button {
+  padding: 10px 13px;
+  border: 1px solid #e7c6ae;
+  border-radius: 10px;
+  background: white;
+  color: #8b451f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-navbar__account button:hover {
+  background: #fff0e4;
+}
+
+@media (max-width: 760px) {
+  .admin-navbar {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 4%;
+  }
+
+  .admin-navbar__brand {
+    flex: 1;
+  }
+
+  .admin-navbar__links {
+    order: 3;
+    width: 100%;
+  }
+
+  .admin-navbar__account {
+    gap: 8px;
+  }
+
+  .admin-navbar__user {
+    display: none;
+  }
+
+  .admin-navbar__account button {
+    padding: 9px;
+    font-size: 12px;
+  }
+}

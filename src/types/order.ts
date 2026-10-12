@@ -1,8 +1,10 @@
+
 export type OrderStatus =
   | "PENDIENTE"
   | "CONFIRMADO"
   | "EN_PREPARACION"
-  | "ENTREGADO";
+  | "ENTREGADO"
+  | "RECHAZADO";
 
 export interface OrderItem {
   productId: string;
@@ -21,4 +23,5 @@ export interface Order {
   total: number;
   paymentMethod: "cash" | "qr";
   status: OrderStatus;
+  rejectionReason?: string;
 }

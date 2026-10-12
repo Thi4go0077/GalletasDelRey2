@@ -1,3 +1,4 @@
+
 import type { Order, OrderStatus } from "../types/order";
 
 const ORDERS_KEY = "galletas_del_rey_orders";
@@ -41,14 +42,24 @@ export const orderService = {
   updateStatus(
     orderId: string,
     status: OrderStatus,
+    rejectionReason?: string,
   ): void {
     const orders = getOrders();
 
-    const updatedOrders = orders.map((order) =>
-      order.id === orderId
-        ? { ...order, status }
-        : order,
-    );
+    const updatedOrders = orders.map((order) => {
+      if (order.id !== orderId) {
+        return order;
+      }
+
+      return {
+        ...order,
+        status,
+        rejectionReason:
+          status === "RECHAZADO"
+            ? rejectionReason?.trim() || "No se especificó un motivo."
+            : undefined,
+      };
+    });
 
     localStorage.setItem(
       ORDERS_KEY,

@@ -30,10 +30,12 @@ import DistributorProfilePage from "../pages/DistributorProfilePage";
 import DistributorLotsPage from "../pages/DistributorLotsPage";
 import DistributorOrdersPage from "../pages/DistributorOrdersPage";
 import DistributorBenefitsPage from "../pages/DistributorBenefitsPage";
+import AdminDashboardPage from "../pages/AdminDashboardPage";
 
 // =========================
 // ADMINISTRACIÓN
 // =========================
+import AdminLoginPage from "../pages/AdminLoginPage";
 import AdminOrdersPage from "../pages/AdminOrdersPage";
 
 // =========================
@@ -45,19 +47,13 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* ==================================
+        {/* =========================
             RUTAS DE ACCESO
-        ================================== */}
+        ========================= */}
 
         <Route
           path="/"
-          element={
-            <Navigate
-              to="/login"
-              replace
-            />
-          }
+          element={<Navigate to="/login" replace />}
         />
 
         <Route
@@ -80,20 +76,14 @@ function AppRoutes() {
           element={<DistributorRegisterPage />}
         />
 
-
-        {/* ==================================
+        {/* =========================
             RUTAS DEL CLIENTE
-        ================================== */}
+        ========================= */}
 
         <Route
           path="/inicio"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "USUARIO",
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
               <HomePage />
             </ProtectedRoute>
           }
@@ -102,12 +92,7 @@ function AppRoutes() {
         <Route
           path="/perfil"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "USUARIO",
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
               <ProfilePage />
             </ProtectedRoute>
           }
@@ -116,12 +101,7 @@ function AppRoutes() {
         <Route
           path="/catalogo"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "USUARIO",
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
               <CatalogPage />
             </ProtectedRoute>
           }
@@ -130,46 +110,29 @@ function AppRoutes() {
         <Route
           path="/carrito"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "USUARIO",
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
               <CartPage />
             </ProtectedRoute>
           }
         />
 
-        {/* MIS PEDIDOS DEL CLIENTE */}
-
         <Route
           path="/pedidos"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "USUARIO",
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["USUARIO"]}>
               <OrdersPage />
             </ProtectedRoute>
           }
         />
 
-
-        {/* ==================================
+        {/* =========================
             RUTAS DEL DISTRIBUIDOR
-        ================================== */}
+        ========================= */}
 
         <Route
           path="/distribuidor"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "DISTRIBUIDOR",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["DISTRIBUIDOR"]}>
               <DistributorHomePage />
             </ProtectedRoute>
           }
@@ -178,11 +141,7 @@ function AppRoutes() {
         <Route
           path="/distribuidor/perfil"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "DISTRIBUIDOR",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["DISTRIBUIDOR"]}>
               <DistributorProfilePage />
             </ProtectedRoute>
           }
@@ -191,11 +150,7 @@ function AppRoutes() {
         <Route
           path="/distribuidor/lotes"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "DISTRIBUIDOR",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["DISTRIBUIDOR"]}>
               <DistributorLotsPage />
             </ProtectedRoute>
           }
@@ -204,11 +159,7 @@ function AppRoutes() {
         <Route
           path="/distribuidor/pedidos"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "DISTRIBUIDOR",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["DISTRIBUIDOR"]}>
               <DistributorOrdersPage />
             </ProtectedRoute>
           }
@@ -217,49 +168,38 @@ function AppRoutes() {
         <Route
           path="/distribuidor/beneficios"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "DISTRIBUIDOR",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["DISTRIBUIDOR"]}>
               <DistributorBenefitsPage />
             </ProtectedRoute>
           }
         />
 
-
-        {/* ==================================
+        {/* =========================
             RUTAS DEL ADMINISTRADOR
-        ================================== */}
+        ========================= */}
+
+        <Route
+          path="/admin-login"
+          element={<AdminLoginPage />}
+        />
 
         <Route
           path="/admin/pedidos"
           element={
-            <ProtectedRoute
-              allowedRoles={[
-                "ADMIN",
-              ]}
-            >
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <AdminOrdersPage />
             </ProtectedRoute>
           }
         />
 
-
-        {/* ==================================
-            RUTA PARA PÁGINAS NO ENCONTRADAS
-        ================================== */}
+        {/* =========================
+            PÁGINA NO ENCONTRADA
+        ========================= */}
 
         <Route
           path="*"
-          element={
-            <Navigate
-              to="/login"
-              replace
-            />
-          }
+          element={<Navigate to="/login" replace />}
         />
-
       </Routes>
     </BrowserRouter>
   );
